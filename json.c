@@ -196,6 +196,13 @@ static int json_parse_array(struct json_value *array)
 	}
 
 	array->type = JSON_TYPE_ARRAY;
+	json_skip_whitespace();
+	ch = input();
+	if (ch == ']') {
+		return 1;
+	}
+	unput();
+
 	do {
 		value = calloc(1, sizeof(*value));
 		if (!value)
