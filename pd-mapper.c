@@ -268,6 +268,7 @@ DIR opendir_firmware(char *firmware_path)
 
 static char *known_extensions[] = {
   ".jsn.xz",
+  ".jsn.zst",
   ".jsn",
   NULL,
 };

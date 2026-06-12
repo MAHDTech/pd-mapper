@@ -1,7 +1,7 @@
 PD_MAPPER := pd-mapper
 
 CFLAGS += -Wall -g -O2
-LDFLAGS += -lqrtr -llzma
+LDFLAGS += -lqrtr -llzma -lzstd
 prefix ?= /usr/local
 
 bindir := $(prefix)/bin
@@ -11,7 +11,8 @@ SRCS := pd-mapper.c \
         assoc.c \
         json.c \
 	servreg_loc.c \
-	lzma_decomp.c
+	lzma_decomp.c \
+	zstd_decomp.c
 
 OBJS := $(SRCS:.c=.o)
 

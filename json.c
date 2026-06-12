@@ -323,6 +323,7 @@ struct json_value *json_parse(const char *json)
 }
 
 extern int lzma_decomp(const char *file);
+extern int zstd_decomp(const char *file);
 
 struct json_value *json_parse_file(const char *file)
 {
@@ -333,6 +334,8 @@ struct json_value *json_parse_file(const char *file)
 
 	if ((strlen(file) > 3) && !strcmp(&file[strlen(file)-3], ".xz"))
 	        fd = lzma_decomp(file);
+	else if ((strlen(file) > 4) && !strcmp(&file[strlen(file)-4], ".zst"))
+	        fd = zstd_decomp(file);
 	else
 	        fd = open(file, O_RDONLY);
 
