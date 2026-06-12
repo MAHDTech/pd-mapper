@@ -404,7 +404,19 @@ int main(int argc, char **argv)
 	int ret;
 	int fd;
 
-	ret = pd_load_maps();
+	int i;
+
+	if (argc > 1) {
+		for (i = 1; i < argc; i++) {
+			ret = pd_load_map(argv[i]);
+			if (ret < 0) {
+				fprintf(stderr, "failed to load map %s\n", argv[i]);
+				exit(1);
+			}
+		}
+	} else {
+		ret = pd_load_maps();
+	}
 	if (ret)
 		exit(1);
 
