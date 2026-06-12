@@ -59,7 +59,7 @@ static void handle_get_domain_list(int sock, const struct qrtr_packet *pkt)
 	struct servreg_loc_get_domain_list_resp resp = {};
 	struct servreg_loc_get_domain_list_req req = {};
 	struct servreg_loc_domain_list_entry *entry;
-	DEFINE_QRTR_PACKET(resp_buf, 256);
+	DEFINE_QRTR_PACKET(resp_buf, 4096);
 	const struct pd_map *pd_map = pd_maps;
 	unsigned int txn;
 	ssize_t len;
